@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+  pre_build:
+    commands:
+      - apt-get update -y 
+      - apt-get install apache2 php php-dev php-mysql -y
+      - wget https://wordpress.org/latest.tar.gz
+      - tar -xvzf latest.tar.gz
+      - cp -r wordpress/* /var/www/html
+      - rm -rf wordpress latest.tar.gz
+      - rm -rf /var/www/html/index.html
+      - chown -R www-data:www-data /var/www/html
+      - service apache2 start
+  build:
+    commands:
+      - echo Build started on `date`
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      
+
