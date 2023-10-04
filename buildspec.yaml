@@ -4,8 +4,6 @@ phases:
   install:
   pre_build:
     commands:
-      - apt-get update -y 
-      - apt-get install apache2 php php-dev php-mysql -y
       - wget https://wordpress.org/latest.tar.gz
       - tar -xvzf latest.tar.gz
       - cp -r wordpress/* /var/www/html
