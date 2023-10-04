@@ -1,5 +1,12 @@
 version: 0.0
 os: linux
 files:
- - source: .
+ - source: /
    destination: /var/www/html
+hooks:
+  AfterInstall:
+  -location: scripts/install_apache.sh
+   timeout: 300
+  ApplicationStart:
+  -location: scripts/start_apache.sh
+   timeout: 300
